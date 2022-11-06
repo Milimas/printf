@@ -1,1 +1,52 @@
-create_arg.o ft_atoi.o ft_calloc.o ft_isdigit.o ft_itoa.o ft_itoa_base.o ft_memset.o ft_printf.o ft_strchr.o ft_strdup.o ft_strlen.o ft_utoa_base.o parse_arg.o print_add.o print_arg.o print_char.o print_num.o print_seq.o print_str.o print_ux.o
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
