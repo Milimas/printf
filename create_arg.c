@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:36:46 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/05 04:47:24 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 11:33:40 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_args	*create_arg(void)
 	t_args	*arg;
 
 	arg = malloc(sizeof(t_args));
+	if (!arg)
+		return (NULL);
 	arg->minus = 0;
 	arg->zero = 0;
 	arg->dot = 0;

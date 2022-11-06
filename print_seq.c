@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:24:58 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:33:33 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 11:19:26 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	print_seq(char c, int n)
 {
 	int	size;
-	
+
 	size = 0;
 	while (n-- > 0)
 		size += write(1, &c, 1);

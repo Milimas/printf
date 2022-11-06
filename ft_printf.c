@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:08:31 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 08:07:49 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 11:40:18 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	ft_printf(const char *format, ...)
 		else
 		{
 			arg = parse_arg((char *)format);
+			if (!arg)
+				return (-1);
 			format = arg->format;
 			if (arg->type)
 				size += _ft_printf(ap, arg);

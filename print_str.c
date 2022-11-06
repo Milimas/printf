@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:45:29 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 07:36:05 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 11:19:49 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	process_arg(t_args *arg, char *str)
 	slen = ft_strlen(str);
 	if (arg->dot && arg->precision < slen)
 		slen = arg->precision;
-	arg->width =
-		(arg->width - slen) * (slen <= arg->width);
+	arg->width = (arg->width - slen) * (slen <= arg->width);
 	arg->width *= arg->width >= 0;
 	if (arg->minus)
 		arg->width = -arg->width;
