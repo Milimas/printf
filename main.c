@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 11:20:11 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 08:02:48 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 08:31:50 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	char	format[] = "%5%";
+	char	format[] = "%.0u";
 	char	*arg = "asdfas";
 	printsize = ft_printf (format, 0);
 	printf("==> %zd", printsize);

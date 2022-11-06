@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:47:07 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 07:40:06 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 08:29:45 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	process_arg(t_args *arg, char *str)
 	if (arg->minus)
 		arg->width = -arg->width;
 	arg->zero = arg->zero - slen
-		* !(!arg->dot && arg->precision > 0) - (arg->space || arg->sign);
+		* !(!arg->dot && arg->precision > 0) - (arg->space || arg->sign || arg->plus);
 }
 
 int	print_num(t_args *arg, int num)
