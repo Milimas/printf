@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:47:48 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 08:33:26 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 09:27:32 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ static void	process_arg(t_args *arg, char *str)
 	arg->precision -= slen;
 	arg->width =
 		(arg->width - slen - arg->precision * (arg->precision > 0)
-		- (2 * arg->hash * (arg->type != 'u'))) 
+		- (2 * arg->hash * (arg->type != 'u' && *str != '0' && slen))) 
 		* (slen <= arg->width);
 	arg->width *= arg->width >= 0;
 	if (arg->minus)
 		arg->width = -arg->width;
-	arg->zero = arg->zero - slen * !(!arg->dot && arg->precision > 0);
+	arg->zero = arg->zero - slen * !(!arg->dot && arg->precision > 0)
+		- (2 * arg->hash * (arg->type != 'u' && *str != '0' && slen));
 }
 
 static char*	get_x_base(char type, unsigned long num,char **prefix)
