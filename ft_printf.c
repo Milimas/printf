@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:08:31 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/04 16:55:05 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 08:07:49 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	_ft_printf(va_list ap, t_args *arg)
 	if (ft_strchr("uxX", arg->type))
 		size += print_ux(arg, va_arg(ap, unsigned int));
 	if (arg->type == '%')
-		size += write(1, "%", 1);
+		size += print_char(arg, '%');
 	return (size);
 }
 

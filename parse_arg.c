@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:38:37 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 00:43:38 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 08:08:04 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,10 @@ t_args	*parse_arg(char *format)
 		format++;
 	arg->type = *format * (ft_strchr("cspdiuxX%", *format) != NULL);
 	arg->format = format + (*format != 0);
+	if (ft_strchr("di", arg->type))
+	{
+		arg->width = arg->zero * !!arg->dot + arg->width * (!arg->dot || !arg->zero);
+		arg->zero = arg->zero * !arg->dot;
+	}
 	return (arg);
 }
