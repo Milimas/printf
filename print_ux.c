@@ -6,11 +6,26 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:47:48 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:54:10 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 03:48:51 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	process_arg(t_args *arg, char *str)
+{
+	int	slen;
+
+	slen = ft_strlen(str);
+	arg->precision *= (arg->width < arg->precision);
+	arg->precision -= slen * (arg->width < arg->precision);
+	arg->width =
+		(arg->width - slen - 2 * arg->hash * (arg->type != 'u')) * (slen <= arg->width);
+	arg->width *= arg->width >= 0;
+	if (arg->minus)
+		arg->width = -arg->width;
+	arg->zero = arg->zero - slen * !(!arg->dot && arg->precision);
+}
 
 static char*	get_x_base(char type, unsigned long num,char **prefix)
 {
@@ -34,25 +49,17 @@ int	print_ux(t_args *arg, unsigned long num)
 {
 	char	*str;
 	int		slen;
-	char	padding;
 	char	*prefix;
 
 	str = get_x_base(arg->type, num, &prefix);
 	slen = (int)ft_strlen(str);
-	if (arg->dot && slen < arg->precision)
-		arg->width = arg->precision;
-	padding = ' ';
-	if (arg->zero || arg->dot)
-	{
-		padding = '0';
-		if (arg->hash && num != 0)
-			arg->size += write(1, prefix, 2);
-	}
-	arg->size += print_seq(padding, arg->width - slen - !!arg->hash);
-	if (!arg->zero && arg->hash && num != 0)
-		arg->size += write(1, prefix, 2);
+	process_arg(arg, str);
+	arg->size += print_seq(' ', arg->width);
+	arg->size += write(1, prefix, 2 * !!num * arg->hash * (arg->type != 'u'));
+	arg->size += print_seq('0', arg->zero);
+	arg->size += print_seq('0', arg->precision);
 	arg->size += write(1, str, slen);
 	free(str);
-	arg->size += print_seq(padding, -arg->width - slen - !!arg->hash);
+	arg->size += print_seq(' ', -arg->width);
 	return (arg->size);
 }

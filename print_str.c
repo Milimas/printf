@@ -6,29 +6,38 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:45:29 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/04 18:11:24 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/06 02:54:10 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static void	process_arg(t_args *arg, char *str)
+{
+	int	slen;
+
+	slen = ft_strlen(str);
+	if (arg->dot && arg->precision < slen)
+		slen = arg->precision;
+	arg->width =
+		(arg->width - slen) * (slen <= arg->width);
+	arg->width *= arg->width >= 0;
+	if (arg->minus)
+		arg->width = -arg->width;
+}
+
 int	print_str(t_args *arg, char *str)
 {
 	int		slen;
-	char	padding;
 
 	if (!str)
 		str = "(null)";
 	slen = (int)ft_strlen(str);
-	if (arg->dot && slen > arg->precision)
+	if (arg->dot && arg->precision < slen)
 		slen = arg->precision;
-	padding = ' ';
-	if (arg->zero)
-		padding = '0';
-	while (arg->width - slen > 0 && arg->width--)
-		arg->size += write(1, &padding, 1);
+	process_arg(arg, str);
+	arg->size += print_seq(' ', arg->width);
 	arg->size += write(1, str, slen);
-	while (arg->width + slen < 0 && arg->width++)
-		arg->size += write(1, " ", 1);
+	arg->size += print_seq(' ', -arg->width);
 	return (arg->size);
 }

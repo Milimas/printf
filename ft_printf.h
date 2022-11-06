@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:07:39 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:28:59 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/05 04:46:47 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_args
 	unsigned int	space;
 	unsigned int	plus;
 	int				width;
+	int				sign;
 	int				precision;
 	char			type;
 	char			*format;
