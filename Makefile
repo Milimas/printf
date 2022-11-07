@@ -6,7 +6,7 @@
 #    By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 18:32:58 by abeihaqi          #+#    #+#              #
-#    Updated: 2022/11/04 17:28:33 by abeihaqi         ###   ########.fr        #
+#    Updated: 2022/11/06 23:35:15 by abeihaqi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ bonus: $(NAME)
 
 debug: $(NAME)
 	clear
-	$(CC) $(CFLAGS) main.c $(NAME) -fsanitize=address -g
+	$(CC) $(CFLAGS) main.c $(NAME)
 	./a.out
 
 clean:

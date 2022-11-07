@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:38:37 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 11:42:43 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:45:20 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,13 @@ t_args	*parse_arg(char *format)
 	arg->precision = ft_atoi(format);
 	while (ft_isdigit(*format))
 		format++;
-	arg->type = *format * (ft_strchr("cspdiuxX%", *format) != NULL);
-	arg->format = format + (*format != 0);
+	while (*format && !arg->type && (*(format - 1) != ' '
+			|| (ft_strchr("cspdiuxX%", *format) != NULL)))
+	{
+		arg->type = *format * (ft_strchr("cspdiuxX%", *format) != NULL);
+		format++;
+	}
+	arg->format = format;
 	if (ft_strchr("diuxX", arg->type))
 	{
 		arg->width = arg->zero * !!arg->dot + arg->width

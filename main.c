@@ -6,7 +6,7 @@
 /*   By: abeihaqi <abeihaqi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 11:20:11 by abeihaqi          #+#    #+#             */
-/*   Updated: 2022/11/06 11:37:20 by abeihaqi         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:55:36 by abeihaqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,26 @@
 #include <stdio.h>
 #include <limits.h>
 
-int	main(int argc, char **argv)
+int	mainw()
 {
 	ssize_t	printsize;
 
-	(void)argc;
-	(void)argv;
-	char	format[] = "%c";
-	char	*arg = "";
-	printsize = ft_printf (format, 'x');
+	char	format[] = "%   ";
+	char	*arg = "%d %s%";
+	printsize = ft_printf (format, arg, 0);
 	printf("==> %zd", printsize);
 	printf("\n");
-	printsize = printf (format, 'x');
+	printsize = printf (format, arg, 0);
 	printf("==> %zd", printsize);
 	(void)arg;
 	(void)format;
 	return (0);
 }
+int main(void)
+{
+	mainw();
+}
 /*
+ *
  * tested s c d i width width and minus and zero
  */
