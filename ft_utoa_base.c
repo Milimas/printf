@@ -49,7 +49,5 @@ static char	*conv(unsigned long long n, char *base)
 
 char	*ft_utoa_base(unsigned long long n, char *base)
 {
-	if (n < 0)
-		n = -n;
 	return (conv(n, base));
 }
